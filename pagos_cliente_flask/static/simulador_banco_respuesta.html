@@ -17,7 +17,7 @@
     <div class="container">
       <div class="row mb-3">
         <h1>Simulador de Respuesta de un pago hecho al Banco (Santander)</h1>
-        <form action="http://172.30.37.233:8007/resultado" method="POST">
+        <form id="form_post" action="#" method="POST">
           <label id="strResponse_label" for="strResponse" class="form-label"
             >strResponse</label
           >
@@ -33,6 +33,38 @@
           <input type="submit" class="btn btn-primary" value="Enviar" />
         </form>
       </div>
+      <div class="row mb-3">
+        <div class="col-auto">
+          <label for="url_input" class="form-label">URL del POST</label>
+          <input
+            type="text"
+            class="form-control"
+            id="url_input"
+            value="172.30.37.233"
+          />
+          <label for="port_input" class="form-label">Port</label>
+          <input
+            type="text"
+            class="form-control"
+            id="port_input"
+            value="8007"
+          />
+          <button class="btn btn-success mt-3" onclick="change_url();">
+            Asignar URL
+          </button>
+        </div>
+      </div>
     </div>
   </body>
+
+  <script>
+    function change_url() {
+      let dir = document.getElementById("url_input").value;
+      let port = document.getElementById("port_input").value;
+
+      url = "http://" + dir + ":" + port + "/resultado";
+
+      document.getElementById("form_post").action = url;
+    }
+  </script>
 </html>
